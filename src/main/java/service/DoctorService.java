@@ -72,6 +72,7 @@ public class DoctorService{
         return true;
     }
 
+
     public java.util.ArrayList<models.Appointment> getAppointmentsForDoctor(int doctorId) {
         return doctorAppointments.get(doctorId);
     }
