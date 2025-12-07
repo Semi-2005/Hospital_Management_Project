@@ -34,7 +34,7 @@ public class PatientHashTable {
             head = head.getNext();
         }
 
-        // Insert new node at head (linked list chaining)
+        // Insert new node at head (SEPARATE CHAINING)
         HashNode newNode = new HashNode(key, patient);
         newNode.setNext(buckets[index]);
         buckets[index] = newNode;
