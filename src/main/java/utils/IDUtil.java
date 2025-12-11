@@ -2,8 +2,8 @@ package utils;
 
 public class IDUtil {
     // Primary student IDs
-    private static final long STUDENT_ID_1 = 230316066L;
-    private static final long STUDENT_ID_2 = 230316060L;
+    private static final long STUDENT_ID_1 = 230316066L;//Semi's Student Id
+    private static final long STUDENT_ID_2 = 230316060L;//Yigit's Student Id
 
     // Combined seed for randomness (unique project behavior)
     private static final long PROJECT_SEED = STUDENT_ID_1 ^ STUDENT_ID_2;
