@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" prefHeight="270.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hospitalmanagementproject.addDoctorController">
+<VBox alignment="TOP_CENTER" prefHeight="270.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hospitalmanagementproject.addPatientController">
    <children>
       <Label text="ADD NEW PATIENT" textAlignment="CENTER">
          <font>
@@ -26,7 +26,7 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <TextField prefHeight="25.0" prefWidth="325.0" />
+                  <TextField fx:id="txtPatientID" prefHeight="25.0" prefWidth="325.0" />
                </children>
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
@@ -36,7 +36,7 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <TextField prefHeight="25.0" prefWidth="253.0" />
+                  <TextField fx:id="txtPatientName" prefHeight="25.0" prefWidth="253.0" />
                </children>
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
@@ -46,7 +46,7 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Slider prefHeight="14.0" prefWidth="225.0" />
+                  <Slider fx:id="sliderAge" prefHeight="14.0" prefWidth="225.0" />
                </children>
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
@@ -56,7 +56,7 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <ComboBox prefHeight="25.0" prefWidth="230.0" />
+                  <ComboBox fx:id="comboBoxPatientGender" prefHeight="25.0" prefWidth="230.0" />
                </children>
             </HBox>
             <HBox prefHeight="51.0" prefWidth="310.0">

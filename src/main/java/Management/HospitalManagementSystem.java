@@ -23,6 +23,10 @@ public class HospitalManagementSystem {
         int id = generateUniquePatientId();
         return patientService.addPatient(id, name, age, gender);
     }
+    public models.Patient createPatient(int id,String name, int age, String gender) {
+        return patientService.addPatient(id, name, age, gender);
+    }
+
 
     // Create patient with provided id
     public models.Patient createPatientWithId(int id, String name, int age, String gender) {
