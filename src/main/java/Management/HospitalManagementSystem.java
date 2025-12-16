@@ -28,11 +28,6 @@ public class HospitalManagementSystem {
     }
 
 
-    // Create patient with provided id
-    public models.Patient createPatientWithId(int id, String name, int age, String gender) {
-        return patientService.addPatient(id, name, age, gender);
-    }
-
     public models.Patient removePatient(int id) {
         return patientService.removePatient(id);
     }
@@ -89,9 +84,11 @@ public class HospitalManagementSystem {
         return doctorService.createAppointment(doctorId, patientId, time);
     }
 
+    //This method returns Appointments for doctor ID
     public java.util.ArrayList<models.Appointment> listAppointmentsForDoctor(int doctorId) {
         return doctorService.getAppointmentsForDoctor(doctorId);
     }
+
 
     public boolean cancelAppointment(int doctorId, String time) {
         java.util.ArrayList<models.Appointment> list = doctorService.getAppointmentsForDoctor(doctorId);
@@ -122,11 +119,7 @@ public class HospitalManagementSystem {
         return (models.ERPatient) o;
     }
 
-    public models.ERPatient peekNextERPatient() {
-        Object o = erQueue.peek();
-        if (o == null) return null;
-        return (models.ERPatient) o;
-    }
+
 
 
 
@@ -152,7 +145,6 @@ public class HospitalManagementSystem {
 
     // --- Undo ---
     // Current undo implementation pops the last action and prints a short message.
-    // Full reversal logic (applying inverse operations) can be implemented here later.
     public void undoLastAction() {
         undo.UndoAction action = undoManager.undo();
         if (action == null) {
