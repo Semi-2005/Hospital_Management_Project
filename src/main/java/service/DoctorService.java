@@ -76,4 +76,17 @@ public class DoctorService{
     public java.util.ArrayList<models.Appointment> getAppointmentsForDoctor(int doctorId) {
         return doctorAppointments.get(doctorId);
     }
+
+    // Returns all doctors as an array
+    public models.Doctor[] getAllDoctors() {
+        java.util.ArrayList<models.Doctor> doctors = new java.util.ArrayList<>();
+
+        for (Integer doctorId : doctorAppointments.keySet()) {
+            models.Doctor doctor = (models.Doctor) doctorTable.get(String.valueOf(doctorId));
+            if (doctor != null) {
+                doctors.add(doctor);
+            }
+        }
+        return doctors.toArray(new models.Doctor[0]);
+    }
 }

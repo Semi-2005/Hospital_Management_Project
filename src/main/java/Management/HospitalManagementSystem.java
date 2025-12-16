@@ -1,5 +1,7 @@
 package Management;
 
+import models.Doctor;
+
 public class HospitalManagementSystem {
     private service.PatientService patientService;
     private service.DoctorService doctorService;
@@ -87,6 +89,26 @@ public class HospitalManagementSystem {
     //This method returns Appointments for doctor ID
     public java.util.ArrayList<models.Appointment> listAppointmentsForDoctor(int doctorId) {
         return doctorService.getAppointmentsForDoctor(doctorId);
+    }
+
+    // Returns all appointments in a single list
+    // (bu methodla aldigimiz appointment arraylistindeki appontmenlarin verilerini toStrig methodu ile teker teker gorebilirsin)
+    public java.util.ArrayList<models.Appointment> listAllAppointments() {
+        java.util.ArrayList<models.Appointment> allAppointments = new java.util.ArrayList<>();
+
+        Doctor[] doctors =doctorService.getAllDoctors();
+        if (doctors == null) return allAppointments;
+
+        for (int i = 0; i < doctors.length; i++) {
+            int doctorId = doctors[i].getId();
+            java.util.ArrayList<models.Appointment> doctorAppointments =
+                    doctorService.getAppointmentsForDoctor(doctorId);
+
+            if (doctorAppointments != null) {
+                allAppointments.addAll(doctorAppointments);
+            }
+        }
+        return allAppointments;
     }
 
 
