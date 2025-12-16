@@ -25,7 +25,7 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <TextField prefHeight="25.0" prefWidth="325.0" />
+                  <TextField fx:id="txtDoctorID" prefHeight="25.0" prefWidth="325.0" />
                </children>
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
@@ -35,7 +35,7 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <TextField prefHeight="25.0" prefWidth="253.0" />
+                  <TextField fx:id="txtDoctorName" prefHeight="25.0" prefWidth="253.0" />
                </children>
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
@@ -45,13 +45,13 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <ComboBox prefHeight="25.0" prefWidth="230.0" />
+                  <ComboBox fx:id="cmbDepartment" prefHeight="25.0" prefWidth="230.0" />
                </children>
             </HBox>
             <HBox prefHeight="51.0" prefWidth="310.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="378.0" text="Save" />
-                  <Button mnemonicParsing="false" onAction="#goToHello" prefHeight="25.0" prefWidth="376.0" text="Cancel" />
+                  <Button mnemonicParsing="false" onAction="#saveBtn" prefHeight="25.0" prefWidth="378.0" text="Save" />
+                  <Button mnemonicParsing="false" onAction="#cancelBtn" prefHeight="25.0" prefWidth="376.0" text="Cancel" />
                </children>
             </HBox>
          </children>
