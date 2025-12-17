@@ -30,7 +30,7 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <TextField />
+                  <TextField fx:id="txtPatientID" />
                </children>
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
@@ -40,10 +40,11 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Slider />
+                  <Slider fx:id="sliderSeverity" max="10.0" min="1.0" />
+                  <Label fx:id="lblSeverityValue" text="0" />
                </children>
             </HBox>
-            <Button mnemonicParsing="false" text="Add" />
+            <Button mnemonicParsing="false" onAction="#addBtn" text="Add" />
          </children>
       </VBox>
    </left>
@@ -60,7 +61,7 @@
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                <children>
                   <Button mnemonicParsing="false" text="Treat Next Critical Patient" />
-                  <Button mnemonicParsing="false" onAction="#goToHello" text="Cancel" />
+                  <Button mnemonicParsing="false" onAction="#goBack" text="Cancel" />
                </children>
                <VBox.margin>
                   <Insets top="5.0" />
@@ -70,7 +71,7 @@
       </VBox>
    </right>
    <bottom>
-      <Label text="00:00:00" BorderPane.alignment="CENTER">
+      <Label fx:id="lblClock" text="00:00:00" BorderPane.alignment="CENTER">
          <font>
             <Font size="16.0" />
          </font>

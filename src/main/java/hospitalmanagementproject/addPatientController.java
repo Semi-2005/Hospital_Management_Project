@@ -24,13 +24,16 @@ public class addPatientController {
     public ComboBox<String> cmbGender;
 
     private sceneChanger sceneChanger = new sceneChanger();
-
+    public Label lblClock;
     public void initialize() {
         sliderAge.valueProperty().addListener((observable, oldValue, newValue) -> {
             lblAgeValue.setText(Integer.toString(newValue.intValue()));
         });
 
         cmbGender.getItems().addAll("Male", "Female");
+        if (lblClock != null) {
+            ClockManager.startClock(lblClock);
+        }
     }
 
     public void goToHello(ActionEvent event) throws IOException {

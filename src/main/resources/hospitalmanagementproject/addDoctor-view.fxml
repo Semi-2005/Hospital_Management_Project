@@ -56,7 +56,7 @@
             </HBox>
          </children>
       </VBox>
-      <Label text="00:00:00">
+      <Label fx:id="lblClock" text="00:00:00">
          <font>
             <Font size="17.0" />
          </font>

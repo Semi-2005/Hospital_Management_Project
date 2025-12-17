@@ -35,7 +35,7 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label prefHeight="23.0" prefWidth="59.0" text="00:00:00">
+                  <Label fx:id="lblClock" prefHeight="23.0" prefWidth="59.0" text="00:00:00">
                      <font>
                         <Font size="16.0" />
                      </font>

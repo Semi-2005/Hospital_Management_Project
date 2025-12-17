@@ -1,11 +1,20 @@
 package hospitalmanagementproject;
 
 import javafx.event.ActionEvent;
+import javafx.scene.control.Label;
+
 import java.io.IOException;
 
 public class HelloController {
+
     private sceneChanger sceneChanger = new sceneChanger();
 
+    public Label lblClock;
+    public void initialize() {
+        if (lblClock != null) {
+            ClockManager.startClock(lblClock);
+        }
+    }
     public void goToAddDoctor(ActionEvent event) throws IOException {
         sceneChanger.changeScene(event, "addDoctor-view.fxml");
     }

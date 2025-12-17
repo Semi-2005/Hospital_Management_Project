@@ -17,7 +17,7 @@
             <Font name="System Bold" size="27.0" />
          </font>
       </Label>
-      <VBox prefHeight="316.0" prefWidth="325.0">
+      <VBox alignment="CENTER" prefHeight="316.0" prefWidth="325.0">
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
@@ -26,7 +26,7 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <TextField prefHeight="25.0" prefWidth="343.0" />
+                  <TextField fx:id="txtPatientID" prefHeight="25.0" prefWidth="343.0" />
                </children>
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
@@ -36,7 +36,7 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <TextField prefHeight="25.0" prefWidth="270.0" />
+                  <TextField fx:id="txtDoctorID" prefHeight="25.0" prefWidth="270.0" />
                </children>
             </HBox>
             <HBox prefHeight="45.0" prefWidth="325.0">
@@ -46,30 +46,30 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <TextField prefHeight="25.0" prefWidth="246.0" />
+                  <TextField fx:id="txtTime" prefHeight="25.0" prefWidth="246.0" />
                </children>
             </HBox>
             <HBox prefHeight="41.0" prefWidth="310.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="383.0" text="Save" />
-                  <Button mnemonicParsing="false" onAction="#goToHello" prefHeight="25.0" prefWidth="376.0" text="Cancel" />
+                  <Button mnemonicParsing="false" onAction="#saveBtn" prefHeight="25.0" prefWidth="383.0" text="Save" />
+                  <Button mnemonicParsing="false" onAction="#cancelBtn" prefHeight="25.0" prefWidth="376.0" text="Cancel" />
                </children>
             </HBox>
-            <Label prefWidth="309.0" text="TODAY'S APPOINTMENTS">
+            <Label alignment="CENTER" prefWidth="309.0" text="TODAY'S APPOINTMENTS">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
             </Label>
-            <TableView prefHeight="184.0" prefWidth="325.0">
+            <TableView fx:id="tableAppointments" prefHeight="184.0" prefWidth="325.0">
               <columns>
-                <TableColumn prefWidth="117.33331048488617" text="Patient Name" />
-                <TableColumn prefWidth="113.33332061767578" text="Doctor" />
-                  <TableColumn prefWidth="78.66667175292969" text="Time" />
+                <TableColumn fx:id="colPatientName" prefWidth="117.33331048488617" text="Patient Name" />
+                <TableColumn fx:id="colDoctorName" prefWidth="137.33335876464844" text="Doctor" />
+                  <TableColumn fx:id="colTime" prefWidth="69.33331298828125" text="Time" />
               </columns>
             </TableView>
          </children>
       </VBox>
-      <Label prefHeight="15.0" prefWidth="63.0" text="00:00:00">
+      <Label fx:id="lblClock" prefHeight="15.0" prefWidth="63.0" text="00:00:00">
          <font>
             <Font size="17.0" />
          </font>

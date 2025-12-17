@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import java.io.IOException;
 
@@ -20,6 +21,7 @@ public class addDoctorController {
     public ComboBox<String> cmbDepartment;
 
     private sceneChanger sceneChanger = new sceneChanger();
+    public Label lblClock;
 
     public void initialize() {
         cmbDepartment.getItems().addAll(
@@ -30,6 +32,9 @@ public class addDoctorController {
                 "General Surgery",
                 "Dermatology"
         );
+        if (lblClock != null) {
+            ClockManager.startClock(lblClock);
+        }
     }
 
     public void cancelBtn(ActionEvent event) throws IOException {
