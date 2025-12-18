@@ -33,28 +33,24 @@ public class appointmentController {
 
     public void saveBtn(ActionEvent event) {
         try {
-            // 1. Alanlar boş mu kontrol et
             if (txtPatientID.getText().isEmpty() || txtDoctorID.getText().isEmpty() || txtTime.getText().isEmpty()) {
                 showAlert("Error", "Please fill in all fields.");
                 return;
             }
 
-            // 2. Verileri al
             int patientID = Integer.parseInt(txtPatientID.getText());
             int doctorID = Integer.parseInt(txtDoctorID.getText());
             String time = txtTime.getText();
 
-            // 3. Sisteme kaydet
-            // Eğer Singleton yaptıysan: HospitalManagementSystem.getInstance();
-            // Yapmadıysan eski usul: new HospitalManagementSystem();
+
             HospitalManagementSystem hms = new HospitalManagementSystem();
 
-            // Modelindeki sıraya göre parametreleri gönder (Önce Doktor ID, Sonra Hasta ID demiştik)
+
             hms.createAppointment(doctorID, patientID, time);
 
             showAlert("Success", "Appointment created successfully.");
 
-            // Formu temizle
+
             txtPatientID.clear();
             txtDoctorID.clear();
             txtTime.clear();
@@ -62,7 +58,7 @@ public class appointmentController {
         } catch (NumberFormatException e) {
             showAlert("Error", "ID fields must be numbers!");
         } catch (IllegalArgumentException e) {
-            // Saat formatı hatalıysa buraya düşer
+
             showAlert("Error", e.getMessage());
         } catch (Exception e) {
             showAlert("Error", "An unexpected error occurred: " + e.getMessage());
