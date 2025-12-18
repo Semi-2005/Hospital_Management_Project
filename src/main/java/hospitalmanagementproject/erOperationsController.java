@@ -41,7 +41,7 @@ public class erOperationsController {
             int patientID = Integer.parseInt(txtPatientID.getText());
             int severity = (int) sliderSeverity.getValue(); // Slider double verir, int'e çeviriyoruz
 
-            HospitalManagementSystem hms = new HospitalManagementSystem();
+            HospitalManagementSystem hms = HelloApplication.getHms();
             hms.addERPatient(patientID, severity);
 
             showAlert("Success", "Patient added to ER Queue with severity: " + severity);

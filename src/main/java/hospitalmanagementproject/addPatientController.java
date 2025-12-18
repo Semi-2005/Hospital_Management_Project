@@ -57,7 +57,7 @@ public class addPatientController {
             int age = (int) sliderAge.getValue();
             String gender = cmbGender.getValue();
 
-            HospitalManagementSystem hms = new HospitalManagementSystem();
+            HospitalManagementSystem hms = HelloApplication.getHms();
             hms.createPatient(id, name, age, gender);
 
             showAlert("Success", "Patient added successfully: " + name);
