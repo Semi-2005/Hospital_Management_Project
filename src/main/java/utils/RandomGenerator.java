@@ -2,12 +2,10 @@ package utils;
 
 public class RandomGenerator {
     private static java.util.Random random;
-
     static {
         // Use project‑wide unique seed from IDUtil
         random = new java.util.Random(IDUtil.getProjectSeed());
     }
-
     /**
      * Returns a random integer within the specified range.
      */
