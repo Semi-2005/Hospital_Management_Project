@@ -1,16 +1,13 @@
 package hospitalmanagementproject;
 
 import Management.HospitalManagementSystem;
+import javafx.scene.control.*;
 import models.Appointment;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -20,8 +17,7 @@ public class appointmentController {
     public TextField txtPatientID;
     @FXML
     public TextField txtDoctorID;
-    @FXML
-    public TextField txtTime;
+
 
     @FXML
     public TableView<Appointment> tableAppointments;
@@ -35,6 +31,7 @@ public class appointmentController {
 
     @FXML
     public Label lblClock;
+    public ComboBox<String> cmbTime;
 
     private sceneChanger sceneChanger = new sceneChanger();
 
@@ -48,6 +45,32 @@ public class appointmentController {
         colTime.setCellValueFactory(data -> new javafx.beans.property.SimpleStringProperty(data.getValue().getTime()));
 
         loadAppointments();
+        cmbTime.getItems().addAll(
+                "00:00","00:30",
+                "01:00","01:30",
+                "02:00","02:30",
+                "03:00","03:30",
+                "04:00","04:30",
+                "05:00","05:30",
+                "06:00","06:30",
+                "07:00","07:30",
+                "08:00","08:30",
+                "09:00","09:30",
+                "10:00","10:30",
+                "11:00","11:30",
+                "12:00","12:30",
+                "13:00","13:30",
+                "14:00","14:30",
+                "15:00","15:30",
+                "16:00","16:30",
+                "17:00","17:30",
+                "18:00","18:30",
+                "19:00","19:30",
+                "20:00","20:30",
+                "21:00","21:30",
+                "22:00","22:30",
+                "23:00","23:30"
+        );
     }
 
     public void loadAppointments() {
@@ -70,14 +93,14 @@ public class appointmentController {
 
     public void saveBtn(ActionEvent event) {
         try {
-            if (txtPatientID.getText().isEmpty() || txtDoctorID.getText().isEmpty() || txtTime.getText().isEmpty()) {
+            if (txtPatientID.getText().isEmpty() || txtDoctorID.getText().isEmpty() || cmbTime.getValue()==null) {
                 showAlert("Error", "Please fill in all fields.");
                 return;
             }
 
             int patientID = Integer.parseInt(txtPatientID.getText());
             int doctorID = Integer.parseInt(txtDoctorID.getText());
-            String time = txtTime.getText();
+            String time = cmbTime.getValue();
 
             HospitalManagementSystem hms = HelloApplication.getHms();
             boolean isCreated = hms.createAppointment(doctorID, patientID, time);
@@ -88,7 +111,7 @@ public class appointmentController {
 
                 txtPatientID.clear();
                 txtDoctorID.clear();
-                txtTime.clear();
+                cmbTime.getSelectionModel().clearSelection();
             } else {
                 showAlert("Error", "Could not create appointment. (Doctor might not exist)");
             }
