@@ -1,5 +1,7 @@
 package data_structures.priorityqueue;
 
+import java.util.ArrayList;
+
 public class Heap {
     private Object[] heap;
     private int size;
@@ -89,5 +91,12 @@ public class Heap {
     public Object peek() {
         if (size == 0) return null;
         return heap[0];
+    }
+    public ArrayList<Object> getHeapElements() {
+        ArrayList<Object> list = new ArrayList<>();
+        for (int i = 0; i < size; i++) {
+            list.add(heap[i]);
+        }
+        return list;
     }
 }

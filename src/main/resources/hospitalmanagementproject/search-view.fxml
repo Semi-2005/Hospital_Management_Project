@@ -5,32 +5,30 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<TabPane prefHeight="178.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hospitalmanagementproject.searchController">
+<TabPane prefHeight="396.0" prefWidth="416.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hospitalmanagementproject.searchController">
    <tabs>
-      <Tab text="Search by ID">
+      <Tab text="Search Patient by ID">
          <content>
-            <VBox alignment="TOP_CENTER">
+            <VBox alignment="TOP_CENTER" prefHeight="224.0" prefWidth="349.0" spacing="5.0">
                <children>
-                  <HBox prefHeight="33.0" prefWidth="360.0">
+                  <HBox alignment="TOP_CENTER" prefHeight="33.0" prefWidth="360.0">
                      <children>
-                        <Label text="Patient ID:">
+                        <Label prefHeight="42.0" prefWidth="84.0" text="Patient ID:">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <TextField prefHeight="25.0" prefWidth="285.0" />
+                        <TextField fx:id="txtPatientID" prefHeight="25.0" prefWidth="250.0" />
                      </children>
                   </HBox>
-                  <Button mnemonicParsing="false" text="Search" />
-                  <Button mnemonicParsing="false" onAction="#goToHello" text="Cancel" />
-                  <Label prefHeight="67.0" prefWidth="360.0" text="Patient Details">
+                  <Button mnemonicParsing="false" onAction="#searchPatient" text="Search" />
+                  <Button mnemonicParsing="false" onAction="#cancelBtn" text="Cancel" />
+                  <Label fx:id="lblPatientResult" prefHeight="169.0" prefWidth="349.0">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -44,32 +42,36 @@
             </VBox>
          </content>
       </Tab>
-      <Tab text="Search by Name">
+      <Tab text="Search Doctor by ID">
          <content>
-            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+            <VBox alignment="TOP_CENTER" spacing="5.0">
                <children>
-                  <HBox prefHeight="35.0" prefWidth="360.0">
+                  <HBox alignment="TOP_CENTER" prefHeight="33.0" prefWidth="360.0">
                      <children>
-                        <Label text="Name:">
+                        <Label prefHeight="37.0" prefWidth="81.0" text="Doctor ID:">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <TextField prefHeight="25.0" prefWidth="313.0" />
+                        <TextField fx:id="txtDoctorID" prefHeight="25.0" prefWidth="250.0" />
                      </children>
                   </HBox>
-                  <Button mnemonicParsing="false" text="Search" />
-                  <Button mnemonicParsing="false" onAction="#goToHello" text="Cancel" />
-                  <TableView prefHeight="200.0" prefWidth="200.0">
-                    <columns>
-                      <TableColumn prefWidth="358.666646361351" text="Name:" />
-                    </columns>
-                  </TableView>
+                  <Button mnemonicParsing="false" onAction="#searchDoctor" text="Search" />
+                  <Button mnemonicParsing="false" onAction="#cancelBtn" text="Cancel" />
+                  <Label fx:id="lblDoctorResult" prefHeight="181.0" prefWidth="349.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblClock1" prefHeight="23.0" prefWidth="59.0" text="00:00:00">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
                </children>
             </VBox>
          </content>
       </Tab>
-      <Tab text="Search Doctor" />
    </tabs>
    <padding>
       <Insets bottom="2.0" left="5.0" right="5.0" />

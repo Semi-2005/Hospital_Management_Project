@@ -41,4 +41,7 @@ public class PatientService {
             p.getVisitHistory().printAll();
         }
     }
+    public models.Patient[] getAllPatients() {
+        return patientTable.getAll();
+    }
 }

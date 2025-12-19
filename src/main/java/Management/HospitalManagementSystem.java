@@ -165,69 +165,62 @@ public class HospitalManagementSystem {
 
 
 
-    // --- Undo ---
-    // Current undo implementation pops the last action and prints a short message.
-    public void undoLastAction() {
+    public String undoLastAction() {
+        undoManager.setUndoing(true);
         undo.UndoAction action = undoManager.undo();
         if (action == null) {
-            System.out.println("No undoable actions left.");
-            return;
+            undoManager.setUndoing(false);
+            return "No undoable actions left.";
         }
 
-        System.out.println("Undoing action: " + action.getActionType());
+        String resultMessage = "";
 
-        // Basic handling for some action types (non-exhaustive).
         switch (action.getActionType()) {
             case ADD_PATIENT:
                 try {
                     models.Patient p = (models.Patient) action.getData();
                     patientService.removePatient(p.getId());
-                    System.out.println("Removed patient created by last action: " + p.getId());
+                    resultMessage = "Undone: Patient record removed ID: " + p.getId();
                 } catch (Exception e) {
-                    System.out.println("Could not undo ADD_PATIENT: " + e.getMessage());
+                    resultMessage = "Error: Could not undo ADD_PATIENT.";
                 }
                 break;
             case REMOVE_PATIENT:
                 try {
                     models.Patient p = (models.Patient) action.getData();
-                    // re-insert patient (no guaranteed original id conflict handling)
                     patientService.addPatient(p.getId(), p.getName(), p.getAge(), p.getGender());
-                    System.out.println("Re-inserted patient: " + p.getId());
+                    resultMessage = "Undone: Deleted patient restored ID: " + p.getId();
                 } catch (Exception e) {
-                    System.out.println("Could not undo REMOVE_PATIENT: " + e.getMessage());
+                    resultMessage = "Error: Could not undo REMOVE_PATIENT.";
                 }
                 break;
             case ADD_DOCTOR:
                 try {
                     models.Doctor d = (models.Doctor) action.getData();
                     doctorService.removeDoctor(d.getId());
-                    System.out.println("Removed doctor created by last action: " + d.getId());
+                    directoryTree.removeDoctor(d);
+
+                    resultMessage = "Undone: Doctor record removed ID: " + d.getId();
                 } catch (Exception e) {
-                    System.out.println("Could not undo ADD_DOCTOR: " + e.getMessage());
+                    resultMessage = "Error: Could not undo ADD_DOCTOR.";
                 }
                 break;
             case REMOVE_DOCTOR:
                 try {
                     models.Doctor d = (models.Doctor) action.getData();
                     doctorService.addDoctor(d.getId(), d.getName(), d.getDepartment(), d.getWorkStart(), d.getWorkEnd());
-                    System.out.println("Re-inserted doctor: " + d.getId());
+                    resultMessage = "Undone: Deleted doctor restored ID: " + d.getId();
                 } catch (Exception e) {
-                    System.out.println("Could not undo REMOVE_DOCTOR: " + e.getMessage());
+                    resultMessage = "Error: Could not undo REMOVE_DOCTOR.";
                 }
                 break;
             case CHECKIN_PATIENT:
-                // For ER check-in, try to remove one matching ERPatient (best-effort)
-                try {
-                    models.ERPatient ep = (models.ERPatient) action.getData();
-                    // remove by matching patientId and arrivalTime — linear scan of heap not provided
-                    System.out.println("NOTE: undo for ER check-in is best-effort and may not remove from queue.");
-                } catch (Exception e) {
-                    System.out.println("Could not undo CHECKIN_PATIENT: " + e.getMessage());
-                }
+                resultMessage = "Info: Undo for ER check-in is not supported.";
                 break;
             default:
-                System.out.println("Undo action type not explicitly handled: " + action.getActionType());
+                resultMessage = "Action undone.";
         }
+        return resultMessage;
     }
 
 
@@ -248,7 +241,34 @@ public class HospitalManagementSystem {
         }
         return Math.abs(id);
     }
+    public java.util.ArrayList<models.Patient> getAllPatients() {
+        java.util.ArrayList<models.Patient> list = new java.util.ArrayList<>();
+        models.Patient[] arr = patientService.getAllPatients();
+        if (arr != null) {
+            java.util.Collections.addAll(list, arr);
+        }
+        return list;
+    }
+    public java.util.ArrayList<models.Doctor> getAllDoctors() {
+        java.util.ArrayList<models.Doctor> list = new java.util.ArrayList<>();
+        models.Doctor[] arr = doctorService.getAllDoctors();
+        if (arr != null) {
+            java.util.Collections.addAll(list, arr);
+        }
+        return list;
+    }
+    public void registerPatient(int id, String name, int age, String gender) {
+        patientService.addPatient(id, name, age, gender);
 
+    }
+
+    public void registerDoctor(int id, String name, String dept, String start, String end) {
+        doctorService.addDoctor(id, name, dept, start, end);
+        models.Doctor newDoctor = doctorService.getDoctor(id);
+        if (newDoctor != null) {
+            directoryTree.addDoctor(newDoctor);
+        }
+    }
 
 
     // --- Getters for sub-systems ---

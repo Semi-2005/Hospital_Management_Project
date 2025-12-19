@@ -1,6 +1,7 @@
 package hospitalmanagementproject;
 
 import javafx.event.ActionEvent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 
 import java.io.IOException;
@@ -35,6 +36,16 @@ public class HelloController {
     }
     public void goToSearch(ActionEvent event) throws IOException {
         sceneChanger.changeScene(event, "search-view.fxml");
+    }
+    public void undoBtn(ActionEvent event) {
+
+        Management.HospitalManagementSystem hms = HelloApplication.getHms();
+        String message = hms.undoLastAction();
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Undo Operation");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
 }

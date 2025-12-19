@@ -1,5 +1,9 @@
 package data_structures.priorityqueue;
 
+import models.ERPatient;
+
+import java.util.ArrayList;
+
 public class ERPriorityQueue {
     private Heap heap;
 
@@ -28,5 +32,19 @@ public class ERPriorityQueue {
     // Removes and returns the most critical patient
     public Object treatNext() {
         return heap.extractMax();
+    }
+
+    public ArrayList<ERPatient> getSnapshot() {
+
+        ArrayList<Object> rawList = heap.getHeapElements();
+        ArrayList<ERPatient> patientList = new ArrayList<>();
+
+
+        for (Object o : rawList) {
+            if (o instanceof ERPatient) {
+                patientList.add((ERPatient) o);
+            }
+        }
+        return patientList;
     }
 }

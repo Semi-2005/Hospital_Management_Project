@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="335.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hospitalmanagementproject.erOperationsController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="335.0" prefWidth="663.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hospitalmanagementproject.erOperationsController">
    <top>
       <Label text="ER OPERATIONS" BorderPane.alignment="CENTER">
          <font>
@@ -49,24 +49,25 @@
       </VBox>
    </left>
    <right>
-      <VBox prefHeight="343.0" prefWidth="299.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="259.0" prefWidth="437.0" BorderPane.alignment="CENTER">
          <children>
-            <TableView prefHeight="200.0" prefWidth="200.0">
+            <TableView fx:id="tableER" prefHeight="168.0" prefWidth="337.0">
               <columns>
-                <TableColumn prefWidth="116.66668951511383" text="ID" />
-                <TableColumn prefWidth="88.66670989990234" text="Severity" />
-                  <TableColumn prefWidth="94.66664123535156" text="ArrivalTime" />
+                <TableColumn fx:id="colID" prefWidth="177.33331298828125" text="ID" />
+                <TableColumn fx:id="colSeverity" prefWidth="68.00003051757812" text="Severity" />
+                  <TableColumn fx:id="colTime" prefWidth="90.66668701171875" text="ArrivalTime" />
               </columns>
             </TableView>
-            <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+            <HBox prefHeight="43.0" prefWidth="291.0" spacing="10.0">
                <children>
-                  <Button mnemonicParsing="false" text="Treat Next Critical Patient" />
-                  <Button mnemonicParsing="false" onAction="#goBack" text="Cancel" />
+                  <Button mnemonicParsing="false" onAction="#treatBtn" text="Treat Next Critical Patient" />
+                  <Button mnemonicParsing="false" onAction="#cancelBtn" prefHeight="41.0" prefWidth="120.0" text="Cancel" />
                </children>
                <VBox.margin>
                   <Insets top="5.0" />
                </VBox.margin>
             </HBox>
+            <Label fx:id="lblNextPatient" text="Queue is Empty!" />
          </children>
       </VBox>
    </right>

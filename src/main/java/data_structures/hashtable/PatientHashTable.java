@@ -86,4 +86,20 @@ public class PatientHashTable {
     public int capacity() {
         return capacity;
     }
+
+    public models.Patient[] getAll() {
+        java.util.ArrayList<models.Patient> list = new java.util.ArrayList<>();
+
+        for (int i = 0; i < capacity; i++) {
+            HashNode head = buckets[i];
+
+            while (head != null) {
+                if (head.getValue() instanceof models.Patient) {
+                    list.add((models.Patient) head.getValue());
+                }
+                head = head.getNext();
+            }
+        }
+        return list.toArray(new models.Patient[0]);
+    }
 }

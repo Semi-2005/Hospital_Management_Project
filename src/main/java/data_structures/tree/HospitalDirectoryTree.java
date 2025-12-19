@@ -25,7 +25,21 @@ public class HospitalDirectoryTree {
         departmentNode.addChild(doctorNode);
         return doctorNode;
     }
-
+    public void addDoctor(models.Doctor doctor) {
+        if (root == null) return;
+        GeneralTreeNode deptNode = null;
+        for (GeneralTreeNode node : root.getChildren()) {
+            if (node.getData().toString().equals(doctor.getDepartment())) {
+                deptNode = node;
+                break;
+            }
+        }
+        if (deptNode == null) {
+            deptNode = new GeneralTreeNode(doctor.getDepartment());
+            root.addChild(deptNode);
+        }
+        addDoctor(deptNode, doctor);
+    }
     // DFS search by name
     public GeneralTreeNode search(Object target) {
         return searchRecursive(root, target);
@@ -55,6 +69,32 @@ public class HospitalDirectoryTree {
         System.out.println("  ".repeat(level) + "- " + node.getData());
         for (GeneralTreeNode child : node.getChildren()) {
             printRecursive(child, level + 1);
+        }
+    }
+    public void removeDoctor(models.Doctor doctor) {
+        if (root == null) return;
+        GeneralTreeNode departmentNode = null;
+        for (GeneralTreeNode node : root.getChildren()) {
+            if (node.getData().toString().equals(doctor.getDepartment())) {
+                departmentNode = node;
+                break;
+            }
+        }
+        if (departmentNode != null) {
+            GeneralTreeNode doctorNodeToDelete = null;
+            for (GeneralTreeNode node : departmentNode.getChildren()) {
+                if (node.getData().toString().contains(doctor.getName())) {
+                    doctorNodeToDelete = node;
+                    break;
+                }
+            }
+
+            if (doctorNodeToDelete != null) {
+                departmentNode.getChildren().remove(doctorNodeToDelete);
+            }
+            if (departmentNode.getChildren().isEmpty()) {
+                root.getChildren().remove(departmentNode);
+            }
         }
     }
 }

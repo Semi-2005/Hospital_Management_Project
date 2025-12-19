@@ -58,7 +58,7 @@ public class addDoctorController {
             String department = cmbDepartment.getValue();
 
             HospitalManagementSystem hms = HelloApplication.getHms();
-            hms.addDoctor(id, name, department,"00:00","12:00");
+            hms.registerDoctor(id, name, department, "08:00", "18:00");
 
             showAlert("Success", "Doctor added successfully: " + name);
 
