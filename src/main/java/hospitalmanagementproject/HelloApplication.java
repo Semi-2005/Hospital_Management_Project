@@ -22,6 +22,7 @@ public class HelloApplication extends Application {
         stage.show();
     }
 
+
     //This method creates doctor objects initially
     public void createInitialDoctor(){
         String[] nameArray = {"Ahmet Yılmaz", "Mehmet Kaya", "Ayşe Demir", "Elif Çetin",
