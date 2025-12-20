@@ -21,13 +21,17 @@ public class searchController {
     public Label lblDoctorResult;
 
     @FXML
-    public Label lblClock;
+    public Label lblClock1;
+    public Label lblClock2;
 
     private sceneChanger sceneChanger = new sceneChanger();
 
     public void initialize() {
-        if (lblClock != null) {
-            ClockManager.startClock(lblClock);
+        if (lblClock1 != null) {
+            ClockManager.startClock(lblClock1);
+        }
+        if (lblClock2 != null) {
+            ClockManager.startClock(lblClock2);
         }
     }
 

@@ -12,7 +12,7 @@
 
 <TabPane prefHeight="396.0" prefWidth="416.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hospitalmanagementproject.searchController">
    <tabs>
-      <Tab text="Search Patient by ID">
+      <Tab closable="false" text="Search Patient by ID">
          <content>
             <VBox alignment="TOP_CENTER" prefHeight="224.0" prefWidth="349.0" spacing="5.0">
                <children>
@@ -33,7 +33,7 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lblClock" prefHeight="23.0" prefWidth="59.0" text="00:00:00">
+                  <Label fx:id="lblClock1" prefHeight="20.0" prefWidth="70.0" text="00:00:00">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -42,7 +42,7 @@
             </VBox>
          </content>
       </Tab>
-      <Tab text="Search Doctor by ID">
+      <Tab closable="false" text="Search Doctor by ID">
          <content>
             <VBox alignment="TOP_CENTER" spacing="5.0">
                <children>
@@ -63,7 +63,7 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lblClock1" prefHeight="23.0" prefWidth="59.0" text="00:00:00">
+                  <Label fx:id="lblClock2" prefHeight="20.0" prefWidth="70.0" text="00:00:00">
                      <font>
                         <Font size="16.0" />
                      </font>
