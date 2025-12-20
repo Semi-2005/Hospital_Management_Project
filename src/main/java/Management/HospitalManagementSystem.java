@@ -92,7 +92,6 @@ public class HospitalManagementSystem {
     }
 
     // Returns all appointments in a single list
-    // (bu methodla aldigimiz appointment arraylistindeki appontmenlarin verilerini toStrig methodu ile teker teker gorebilirsin)
     public java.util.ArrayList<models.Appointment> listAllAppointments() {
         java.util.ArrayList<models.Appointment> allAppointments = new java.util.ArrayList<>();
 

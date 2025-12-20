@@ -1,6 +1,7 @@
 package hospitalmanagementproject;
 
 import Management.HospitalManagementSystem;
+import data_structures.hashtable.DoctorHashTable;
 import javafx.scene.control.*;
 import models.Appointment;
 import javafx.collections.FXCollections;
@@ -104,7 +105,6 @@ public class appointmentController {
 
             HospitalManagementSystem hms = HelloApplication.getHms();
             boolean isCreated = hms.createAppointment(doctorID, patientID, time);
-
             if (isCreated) {
                 showAlert("Success", "Appointment created successfully.");
                 loadAppointments();
@@ -113,7 +113,7 @@ public class appointmentController {
                 txtDoctorID.clear();
                 cmbTime.getSelectionModel().clearSelection();
             } else {
-                showAlert("Error", "Could not create appointment. (Doctor might not exist)");
+                showAlert("Error", "Could not create appointment.");
             }
 
         } catch (NumberFormatException e) {
