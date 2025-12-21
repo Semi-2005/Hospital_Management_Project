@@ -104,16 +104,20 @@ public class appointmentController {
             String time = cmbTime.getValue();
 
             HospitalManagementSystem hms = HelloApplication.getHms();
-            boolean isCreated = hms.createAppointment(doctorID, patientID, time);
-            if (isCreated) {
+            int isCreated = hms.createAppointment(doctorID, patientID, time);
+            if (isCreated==11) {
                 showAlert("Success", "Appointment created successfully.");
                 loadAppointments();
 
                 txtPatientID.clear();
                 txtDoctorID.clear();
                 cmbTime.getSelectionModel().clearSelection();
-            } else {
-                showAlert("Error", "Could not create appointment.");
+            } else if(isCreated==0){
+                showAlert("Error", "Could not create appointment:Doctor does not exist.");
+            }else if(isCreated==1){
+                showAlert("Error", "Could not create appointment:Doctor is not working during this time period.");
+            }else if(isCreated==2){
+                showAlert("Error", "Could not create appointment:Doctor have appointment this hour.");
             }
 
         } catch (NumberFormatException e) {

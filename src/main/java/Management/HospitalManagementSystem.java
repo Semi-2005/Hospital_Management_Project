@@ -82,7 +82,7 @@ public class HospitalManagementSystem {
 
 
     // --- Appointment operations ---
-    public boolean createAppointment(int doctorId, int patientId, String time) {
+    public int createAppointment(int doctorId, int patientId, String time) {
         return doctorService.createAppointment(doctorId, patientId, time);
     }
 

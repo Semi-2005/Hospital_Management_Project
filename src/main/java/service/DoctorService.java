@@ -51,25 +51,29 @@ public class DoctorService{
         return null;
     }
 
-    public boolean createAppointment(int doctorId, int patientId, String time) {
+    public int createAppointment(int doctorId, int patientId, String time) {
         models.Doctor doctor = (models.Doctor) doctorTable.get(String.valueOf(doctorId));
-        if (doctor == null) return false;
+        //Doctor does not exist
+        if (doctor == null) return 0;
 
         if (!utils.TimeUtil.isWithin(time, doctor.getWorkStart(), doctor.getWorkEnd())) {
-            return false;
+            //Doctor does not work this hour
+            return 1;
         }
 
         java.util.ArrayList<models.Appointment> list = doctorAppointments.get(doctorId);
 
         for (models.Appointment a : list) {
             if (utils.TimeUtil.compare(a.getTime(), time) == 0) {
-                return false;
+                //Doctor also have appointment in this hour
+                return 2;
             }
         }
 
         models.Appointment newApp = new models.Appointment(doctorId, patientId, time);
         list.add(newApp);
-        return true;
+        //Appointment created
+        return 11;
     }
 
 
